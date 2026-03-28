@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Track Western North America ski resorts on the 2026/2027 Mountain Collective pass."
+    />
+    <meta name="theme-color" content="#16324f" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="icon" href="icons/icon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="icons/icon-512.svg" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Powder Passport</title>
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="hero">
+        <div class="hero__copy">
+          <p class="eyebrow">Mountain Collective 2026/2027</p>
+          <h1>Track the Western resorts you want to ski next.</h1>
+          <p class="hero__text">
+            Start with Western North America Mountain Collective destinations,
+            mark where you have been, and keep a shortlist for storm-chasing
+            weekends.
+          </p>
+          <div class="hero__actions">
+            <button id="installButton" class="button button--primary" hidden>
+              Install app
+            </button>
+            <button id="resetButton" class="button button--ghost" type="button">
+              Reset tracker
+            </button>
+          </div>
+        </div>
+        <section class="hero__stats" aria-label="Trip stats">
+          <article class="stat-card">
+            <span class="stat-card__label">Tracked resorts</span>
+            <strong id="totalResorts" class="stat-card__value">0</strong>
+          </article>
+          <article class="stat-card">
+            <span class="stat-card__label">Visited</span>
+            <strong id="visitedResorts" class="stat-card__value">0</strong>
+          </article>
+          <article class="stat-card">
+            <span class="stat-card__label">Wishlist</span>
+            <strong id="wishlistResorts" class="stat-card__value">0</strong>
+          </article>
+          <article class="stat-card">
+            <span class="stat-card__label">Next up</span>
+            <strong id="plannedResorts" class="stat-card__value">0</strong>
+          </article>
+        </section>
+      </header>
+
+      <main class="content">
+        <section class="controls" aria-label="Filters">
+          <label class="search-field">
+            <span class="search-field__label">Search resorts</span>
+            <input
+              id="searchInput"
+              type="search"
+              placeholder="Try Snowbird, Banff, Utah..."
+              autocomplete="off"
+            />
+          </label>
+
+          <label class="filter-field">
+            <span class="filter-field__label">Region</span>
+            <select id="regionFilter">
+              <option value="all">All Western North America</option>
+            </select>
+          </label>
+
+          <label class="filter-field">
+            <span class="filter-field__label">Status</span>
+            <select id="statusFilter">
+              <option value="all">Any status</option>
+              <option value="untracked">Untracked</option>
+              <option value="wishlist">Wishlist</option>
+              <option value="planned">Planning trip</option>
+              <option value="visited">Visited</option>
+            </select>
+          </label>
+
+          <label class="filter-field">
+            <span class="filter-field__label">Sort by</span>
+            <select id="sortFilter">
+              <option value="name">Name</option>
+              <option value="region">Region</option>
+              <option value="state">State / Province</option>
+              <option value="status">Tracking status</option>
+            </select>
+          </label>
+        </section>
+
+        <section class="board-header">
+          <div>
+            <p class="eyebrow eyebrow--dark">Resort board</p>
+            <h2>Western North America destinations</h2>
+          </div>
+          <p id="resultsLabel" class="results-label" aria-live="polite"></p>
+        </section>
+
+        <section id="resortGrid" class="resort-grid" aria-live="polite"></section>
+      </main>
+    </div>
+
+    <template id="resortCardTemplate">
+      <article class="resort-card">
+        <div class="resort-card__header">
+          <div>
+            <p class="resort-card__country"></p>
+            <h3 class="resort-card__name"></h3>
+          </div>
+          <button class="favorite-toggle" type="button" aria-label="Toggle favorite">
+            ☆
+          </button>
+        </div>
+
+        <p class="resort-card__location"></p>
+        <p class="resort-card__blurb"></p>
+
+        <dl class="resort-meta">
+          <div>
+            <dt>Region</dt>
+            <dd class="resort-card__region"></dd>
+          </div>
+          <div>
+            <dt>Base</dt>
+            <dd class="resort-card__nearby"></dd>
+          </div>
+        </dl>
+
+        <div class="resort-card__controls">
+          <label>
+            <span>Status</span>
+            <select class="status-select">
+              <option value="untracked">Untracked</option>
+              <option value="wishlist">Wishlist</option>
+              <option value="planned">Planning trip</option>
+              <option value="visited">Visited</option>
+            </select>
+          </label>
+
+          <label>
+            <span>Trip notes</span>
+            <textarea
+              class="notes-input"
+              rows="3"
+              placeholder="Snowboard-friendly crew? Storm target? Lodging ideas?"
+            ></textarea>
+          </label>
+        </div>
+      </article>
+    </template>
+
+    <script src="app.js" defer></script>
+  </body>
+</html>

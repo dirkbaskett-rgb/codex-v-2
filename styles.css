@@ -1,0 +1,361 @@
+:root {
+  color-scheme: light;
+  --bg: #f4efe6;
+  --surface: rgba(255, 252, 246, 0.9);
+  --surface-strong: #fffaf2;
+  --text: #1c2430;
+  --muted: #586170;
+  --accent: #16324f;
+  --accent-strong: #0e2236;
+  --accent-soft: #d9e6f2;
+  --warm: #d97d54;
+  --line: rgba(28, 36, 48, 0.12);
+  --shadow: 0 24px 60px rgba(22, 50, 79, 0.12);
+  --radius-xl: 28px;
+  --radius-lg: 20px;
+  --radius-md: 14px;
+  --radius-sm: 10px;
+  --font-display: "Georgia", "Times New Roman", serif;
+  --font-body: "Segoe UI", "Helvetica Neue", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--font-body);
+  color: var(--text);
+  background:
+    radial-gradient(circle at top left, rgba(217, 125, 84, 0.18), transparent 30%),
+    radial-gradient(circle at top right, rgba(22, 50, 79, 0.2), transparent 35%),
+    linear-gradient(180deg, #efe4d4 0%, #f7f2ea 45%, #eef3f6 100%);
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+.page-shell {
+  width: min(1200px, calc(100% - 2rem));
+  margin: 0 auto;
+  padding: 1.25rem 0 3rem;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 1rem;
+  padding: 1rem 0 2rem;
+}
+
+.hero__copy,
+.hero__stats,
+.controls,
+.resort-card {
+  border: 1px solid var(--line);
+  background: var(--surface);
+  backdrop-filter: blur(14px);
+  box-shadow: var(--shadow);
+}
+
+.hero__copy {
+  padding: 2rem;
+  border-radius: var(--radius-xl);
+}
+
+.eyebrow {
+  margin: 0 0 0.75rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255, 250, 242, 0.8);
+}
+
+.eyebrow--dark {
+  color: var(--warm);
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-family: var(--font-display);
+  line-height: 1.05;
+}
+
+h1 {
+  max-width: 12ch;
+  font-size: clamp(2.7rem, 6vw, 5rem);
+  color: #fffaf2;
+}
+
+.hero__copy {
+  background:
+    linear-gradient(135deg, rgba(8, 22, 36, 0.82), rgba(22, 50, 79, 0.86)),
+    linear-gradient(45deg, rgba(217, 125, 84, 0.3), transparent);
+}
+
+.hero__text {
+  max-width: 56ch;
+  margin: 1rem 0 0;
+  font-size: 1.02rem;
+  line-height: 1.7;
+  color: rgba(255, 250, 242, 0.9);
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.button {
+  border: 0;
+  border-radius: 999px;
+  padding: 0.9rem 1.25rem;
+  cursor: pointer;
+  transition: transform 150ms ease, opacity 150ms ease, background 150ms ease;
+}
+
+.button:hover {
+  transform: translateY(-1px);
+}
+
+.button--primary {
+  color: white;
+  background: var(--warm);
+}
+
+.button--ghost {
+  color: #fffaf2;
+  background: rgba(255, 250, 242, 0.12);
+  border: 1px solid rgba(255, 250, 242, 0.18);
+}
+
+.hero__stats {
+  display: grid;
+  gap: 0.9rem;
+  padding: 1rem;
+  border-radius: var(--radius-xl);
+}
+
+.stat-card {
+  padding: 1.1rem 1.15rem;
+  border-radius: var(--radius-lg);
+  background: var(--surface-strong);
+  border: 1px solid rgba(22, 50, 79, 0.08);
+}
+
+.stat-card__label {
+  display: block;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.stat-card__value {
+  display: block;
+  margin-top: 0.2rem;
+  font-size: 1.9rem;
+  color: var(--accent);
+}
+
+.content {
+  display: grid;
+  gap: 1.2rem;
+}
+
+.controls {
+  display: grid;
+  grid-template-columns: 2fr repeat(3, 1fr);
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: var(--radius-xl);
+}
+
+.search-field,
+.filter-field {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.search-field__label,
+.filter-field__label {
+  font-size: 0.88rem;
+  color: var(--muted);
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  border: 1px solid rgba(22, 50, 79, 0.14);
+  border-radius: var(--radius-sm);
+  padding: 0.82rem 0.9rem;
+  background: #fffdf8;
+  color: var(--text);
+}
+
+textarea {
+  resize: vertical;
+  min-height: 88px;
+}
+
+.board-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 1rem;
+}
+
+.board-header h2 {
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+}
+
+.results-label {
+  margin: 0;
+  color: var(--muted);
+}
+
+.resort-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.resort-card {
+  display: grid;
+  gap: 1rem;
+  padding: 1.15rem;
+  border-radius: var(--radius-lg);
+  animation: rise-in 400ms ease both;
+}
+
+.resort-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: 0.75rem;
+}
+
+.resort-card__country {
+  margin: 0 0 0.3rem;
+  color: var(--warm);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.75rem;
+}
+
+.resort-card__name {
+  font-size: 1.6rem;
+}
+
+.favorite-toggle {
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 999px;
+  border: 1px solid rgba(22, 50, 79, 0.12);
+  background: #fffdf8;
+  color: var(--warm);
+  cursor: pointer;
+  font-size: 1.3rem;
+}
+
+.favorite-toggle.is-active {
+  background: #fff0e8;
+}
+
+.resort-card__location,
+.resort-card__blurb {
+  margin: 0;
+  line-height: 1.6;
+}
+
+.resort-card__location {
+  color: var(--muted);
+}
+
+.resort-meta {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin: 0;
+}
+
+.resort-meta div {
+  padding: 0.85rem 0.9rem;
+  border-radius: var(--radius-md);
+  background: rgba(217, 230, 242, 0.35);
+}
+
+.resort-meta dt {
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.resort-meta dd {
+  margin: 0.15rem 0 0;
+  font-weight: 600;
+}
+
+.resort-card__controls {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.resort-card__controls label {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.resort-card__controls span {
+  font-size: 0.88rem;
+  color: var(--muted);
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 900px) {
+  .hero,
+  .controls {
+    grid-template-columns: 1fr;
+  }
+
+  h1 {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 640px) {
+  .page-shell {
+    width: min(100% - 1rem, 1200px);
+  }
+
+  .hero__copy,
+  .hero__stats,
+  .controls,
+  .resort-card {
+    padding: 1rem;
+  }
+
+  .board-header {
+    align-items: start;
+    flex-direction: column;
+  }
+}
